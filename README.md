@@ -97,6 +97,10 @@ python -m compileall -q src tests
 
 The CI workflow runs the test suite and a JSON CLI smoke check on every push.
 
+## Maturity note
+
+This demo represents an evaluation pattern for RAG/GraphRAG systems. It uses synthetic fixtures and should not be read as a claim that all internal AI evaluation or GraphRAG initiatives are live services.
+
 ## Privacy boundary
 
 All examples are synthetic. The repository intentionally contains no production documents, credentials, internal URLs, real names, private paths, runtime databases, or raw client data.
