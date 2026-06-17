@@ -1,6 +1,12 @@
 # Enterprise Document AI Evaluation
 
+[![CI](https://github.com/tSamat/enterprise-doc-ai-evaluation/actions/workflows/ci.yml/badge.svg)](https://github.com/tSamat/enterprise-doc-ai-evaluation/actions/workflows/ci.yml)
+
 A public-safe, synthetic evaluation harness for RAG/GraphRAG answer quality.
+
+Portfolio: https://tsamat.github.io/
+
+## What it demonstrates
 
 This demo shows how to evaluate enterprise document AI without publishing private documents:
 
@@ -10,9 +16,8 @@ This demo shows how to evaluate enterprise document AI without publishing privat
 - citation/source recall checks;
 - forbidden disclosure checks;
 - aggregate quality report;
+- Markdown and JSON output;
 - pytest coverage and GitHub Actions CI.
-
-Portfolio: https://tsamat.github.io/
 
 ## Why this matters
 
@@ -26,6 +31,35 @@ Enterprise AI quality cannot be managed with a few hand-picked prompts. A useful
 
 This repository demonstrates that loop with fully synthetic data.
 
+## Stack
+
+- Python 3.11+
+- dataclass-based evaluation model
+- deterministic baseline answerer
+- pytest
+- GitHub Actions
+- synthetic fixtures only
+
+## Architecture
+
+```text
+Synthetic corpus
+  |
+  v
+Evaluation cases
+  |
+  +--> Deterministic baseline answerer
+  |
+  +--> Citation recall check
+  |
+  +--> Expected term coverage check
+  |
+  +--> Privacy disclosure check
+  |
+  v
+Suite metrics + Markdown/JSON report
+```
+
 ## Quickstart
 
 ```bash
@@ -37,6 +71,36 @@ enterprise-doc-ai-eval --format markdown
 enterprise-doc-ai-eval --format json
 ```
 
-## Privacy note
+## Example report excerpt
 
-All examples are synthetic. The repository intentionally contains no production documents, credentials, internal URLs, real names, or private paths.
+```text
+# Enterprise Document AI Evaluation Report
+
+Total cases: 4
+Passed cases: 4
+
+## Metrics
+
+- citation_recall: 1.0000
+- privacy_pass_rate: 1.0000
+- average_score: 1.0000
+```
+
+## Verification
+
+```bash
+pytest
+enterprise-doc-ai-eval --format markdown
+enterprise-doc-ai-eval --format json
+python -m compileall -q src tests
+```
+
+The CI workflow runs the test suite and a JSON CLI smoke check on every push.
+
+## Privacy boundary
+
+All examples are synthetic. The repository intentionally contains no production documents, credentials, internal URLs, real names, private paths, runtime databases, or raw client data.
+
+## Portfolio fit
+
+This project demonstrates quality engineering for document-grounded AI: capability-based tests, measurable regression signals, and privacy-aware evaluation design.
