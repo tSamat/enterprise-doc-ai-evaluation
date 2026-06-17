@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+.env
+.env.*
+
+# Local/editor
+.vscode/
+.idea/
+.DS_Store
+
+# Keep this public demo lightweight and synthetic
+runtime/
+data/private/
+outputs/private/
+*.sqlite
+*.sqlite3
+*.db
+*.parquet
+*.zip
+*.7z
+*.tar
+*.gz
+*.pdf
+*.xlsx
+*.docx
+*.pptx
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*
+credentials.*
+token.*
